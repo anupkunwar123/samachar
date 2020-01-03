@@ -1,0 +1,13 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#fff</item>
+        <item name="colorPrimaryDark">#000</item>
+    </style>
+
+    <style name="ToolbarStyle" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+        <item name="actionMenuTextColor">?attr/colorOnPrimary</item>
+    </style>
+
+</resources>
