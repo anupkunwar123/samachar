@@ -1,10 +1,10 @@
-package com.anupkunwar.samachar.home
+package com.anupkunwar.samachar.publisher.impl
 
 import com.anupkunwar.samachar.NewsService
-import com.anupkunwar.samachar.PublisherRepository
 import com.anupkunwar.samachar.model.Language
 import com.anupkunwar.samachar.model.News
 import com.anupkunwar.samachar.model.Publisher
+import com.anupkunwar.samachar.publisher.PublisherRepository
 import com.tickaroo.tikxml.annotation.Element
 import com.tickaroo.tikxml.annotation.PropertyElement
 import com.tickaroo.tikxml.annotation.Xml
@@ -27,7 +27,13 @@ class BBCRepository @Inject constructor(
                     title = it.title,
                     description = it.description,
                     pubDate = it.pubDate,
-                    link = it.link
+                    link = it.link,
+                    publisher = Publisher(
+                        name = response.channel.title,
+                        description = response.channel.description,
+                        logo = response.channel.image.link,
+                        language = Language.NEPALI
+                    )
                 )
             }
         )
@@ -36,7 +42,7 @@ class BBCRepository @Inject constructor(
 
 
     @Xml
-    data class BBCRss(
+    data class RssFeed(
         @Element
         val channel: Channel
 
@@ -58,19 +64,7 @@ class BBCRepository @Inject constructor(
         val items: List<Item>
     )
 
-    @Xml
-    data class BBCResponse(
-        @PropertyElement
-        val title: String,
-        @PropertyElement
-        val description: String,
-        @PropertyElement
-        val link: String,
-        @PropertyElement
-        val image: Image,
-        @Element
-        val items: List<Item>
-    )
+
 
     @Xml
     data class Image(

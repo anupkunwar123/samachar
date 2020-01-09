@@ -1,4 +1,4 @@
-package com.anupkunwar.samachar
+package com.anupkunwar.samachar.publisher
 
 import com.anupkunwar.samachar.model.Publisher
 

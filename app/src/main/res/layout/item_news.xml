@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.anupkunwar.samachar.model.News" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="48dp"
+        android:paddingBottom="48dp"
+        android:paddingEnd="48dp">
+
+        <TextView
+            style="?attr/textAppearanceHeadline5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{item.title}"
+            tools:text="@tools:sample/cities" />
+
+        <TextView
+            style="?attr/textAppearanceSubtitle2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="4"
+            android:ellipsize="end"
+            android:layout_marginTop="8dp"
+            html_text="@{item.description}"
+            tools:text="@tools:sample/lorem/random" />
+
+        <TextView
+            html_text="@{item.publisher.name}"
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp"
+            style="@style/PublisherStyle"
+            tools:text="@tools:sample/cities"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</layout>

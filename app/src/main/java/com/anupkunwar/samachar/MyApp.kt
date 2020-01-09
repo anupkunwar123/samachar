@@ -1,5 +1,6 @@
 package com.anupkunwar.samachar
 
+import androidx.appcompat.app.AppCompatDelegate
 import coil.Coil
 import coil.ImageLoader
 import com.anupkunwar.samachar.di.AppComponent
@@ -21,7 +22,6 @@ class MyApp : DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
-
 
         //set logging
         if (BuildConfig.DEBUG) {

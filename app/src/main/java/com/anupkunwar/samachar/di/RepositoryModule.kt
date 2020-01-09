@@ -1,7 +1,9 @@
 package com.anupkunwar.samachar.di
 
-import com.anupkunwar.samachar.PublisherRepository
-import com.anupkunwar.samachar.home.BBCRepository
+import com.anupkunwar.samachar.publisher.PublisherRepository
+import com.anupkunwar.samachar.publisher.impl.BBCRepository
+import com.anupkunwar.samachar.publisher.impl.OnlineKhabarRepository
+import com.anupkunwar.samachar.publisher.impl.SetoPatiRepository
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -13,7 +15,17 @@ abstract class RepositoryModule {
     @Binds
     @IntoMap
     @RepositoryKey(BBCRepository::class)
-    abstract fun provideBBCPublisher(bbc: BBCRepository): PublisherRepository
+    abstract fun bbcRepository(bbc: BBCRepository): PublisherRepository
+
+    @Binds
+    @IntoMap
+    @RepositoryKey(SetoPatiRepository::class)
+    abstract fun setoPatiRepository(setoPati: SetoPatiRepository): PublisherRepository
+
+    @Binds
+    @IntoMap
+    @RepositoryKey(OnlineKhabarRepository::class)
+    abstract fun onlinekhabarRepository(onlinekhabar: OnlineKhabarRepository): PublisherRepository
 
 }
 
