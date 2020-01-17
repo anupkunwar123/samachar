@@ -5,7 +5,6 @@ import com.anupkunwar.samachar.model.News
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.transform
 import javax.inject.Inject
 import javax.inject.Provider
 
@@ -17,10 +16,8 @@ class PublishersRepository @Inject constructor(
     fun getPublishersList(): Flow<List<News>> {
         return flow {
             for ((_, value) in publishers) {
-                emit(value.get().getPublisher())
+                emit(mutableListOf<News>())
             }
-        }.transform {
-            emit(it.news!!)
         }.flowOn(appCoroutineDispatcher.io)
 
     }

@@ -3,9 +3,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">#fff</item>
-        <item name="colorPrimaryDark">#000</item>
-        <item name="textAppearanceHeadline5">@style/HeadlineStyle</item>
-        <item name="textAppearanceSubtitle1">@style/Subtitle2</item>
+        <item name="colorPrimaryDark">?attr/colorPrimaryDark</item>
     </style>
 
     <style name="ToolbarStyle" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">

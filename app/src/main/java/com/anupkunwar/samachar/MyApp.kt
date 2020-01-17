@@ -1,6 +1,5 @@
 package com.anupkunwar.samachar
 
-import androidx.appcompat.app.AppCompatDelegate
 import coil.Coil
 import coil.ImageLoader
 import com.anupkunwar.samachar.di.AppComponent
@@ -34,6 +33,7 @@ class MyApp : DaggerApplication() {
             ImageLoader(this)
 
         }
+
     }
 
     object ReleaseTree : Timber.Tree() {

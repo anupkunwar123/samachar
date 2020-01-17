@@ -14,18 +14,19 @@ import coil.api.load
 )
 fun setImageUrl(
     imageView: ImageView,
-    imageUrl: String?
+    drawableResource: Int
 
 ) {
     imageView.doOnPreDraw {
-        if (!imageUrl.isNullOrBlank()) {
-            imageView.load(imageUrl) {
-                crossfade(true)
-            }
+        imageView.load(drawableResource) {
+            crossfade(true)
         }
+
     }
 
 }
+
+
 
 
 @BindingAdapter("elevation")

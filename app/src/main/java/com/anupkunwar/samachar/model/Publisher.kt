@@ -1,21 +1,45 @@
 package com.anupkunwar.samachar.model
 
+import androidx.recyclerview.widget.DiffUtil
+import androidx.room.TypeConverter
 import com.anupkunwar.samachar.R
 
 data class Publisher(
     val name: String,
     val slug: String,
-    val logo: Int? = null,
+    val logo: Int,
     val feedUrl: String,
     val news: List<News>? = null,
     val language: Language
 )
 
-enum class Language {
-    NEPALI, ENGLISH
+enum class Language(val code: Int) {
+    NEPALI(0),
+    ENGLISH(1);
+
+    class LanguageConverter {
+        @TypeConverter
+        fun toLanguage(code: Int): Language {
+            return when (code) {
+                NEPALI.code -> NEPALI
+                else -> ENGLISH
+            }
+        }
+
+        @TypeConverter
+        fun getStatusInt(language: Language) = language.code
+    }
 }
 
-val PUBLISHER_LIST = mutableListOf(
+object PublisherDiff : DiffUtil.ItemCallback<Publisher>() {
+    override fun areItemsTheSame(oldItem: Publisher, newItem: Publisher) =
+        oldItem.slug == newItem.slug
+
+    override fun areContentsTheSame(oldItem: Publisher, newItem: Publisher) = oldItem == newItem
+
+}
+
+val PUBLISHER_LIST = listOf(
     Publisher(
         name = "BBC Nepali",
         slug = "bbc_nepali",
@@ -34,7 +58,7 @@ val PUBLISHER_LIST = mutableListOf(
         name = "Online Khabar English",
         slug = "online_khabar_eng",
         feedUrl = "https://english.onlinekhabar.com/rss",
-        language = Language.NEPALI,
+        language = Language.ENGLISH,
         logo = R.drawable.online_khabar_english
     ),
     Publisher(
@@ -213,8 +237,8 @@ val PUBLISHER_LIST = mutableListOf(
         language = Language.NEPALI,
         logo = R.drawable.lokpath
     ), Publisher(
-        name = "Lokpath",
-        slug = "lokpath",
+        name = "Lokpath English",
+        slug = "lokpath_eng",
         feedUrl = "https://english.lokpath.com/rss",
         language = Language.ENGLISH,
         logo = R.drawable.lokpath

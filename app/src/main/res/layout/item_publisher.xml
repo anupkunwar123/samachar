@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.anupkunwar.samachar.model.Publisher" />
+
+        <import type="com.anupkunwar.samachar.model.Language" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="?attr/colorButtonNormal"
+        android:gravity="center_vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView"
+            android:layout_margin="@dimen/normal_margin"
+            image_url="@{item.logo}"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitStart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/bbc" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView"
+            style="?attr/textAppearanceHeadline6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/normal_margin"
+            android:layout_marginLeft="@dimen/normal_margin"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@{item.name}"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView"
+            app:layout_constraintEnd_toStartOf="@+id/appCompatImageView2"
+            app:layout_constraintStart_toEndOf="@id/appCompatImageView"
+            app:layout_constraintTop_toTopOf="@+id/appCompatImageView"
+            tools:text="@tools:sample/cities" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_margin="4dp"
+            android:id="@+id/appCompatImageView2"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:visibility="@{item.language == Language.ENGLISH ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_england" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

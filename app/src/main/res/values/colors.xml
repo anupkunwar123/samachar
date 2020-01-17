@@ -5,4 +5,5 @@
     <color name="colorAccent">#212121</color>
     <color name="colorOnPrimary">#fff</color>
     <color name="background">#FAFAFA</color>
+    <color name="immersive_sys_ui">#33000000</color>
 </resources>

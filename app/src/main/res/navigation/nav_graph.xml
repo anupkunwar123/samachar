@@ -3,13 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@+id/selectPublisherFragment">
+
+    <fragment
+        android:id="@+id/selectPublisherFragment"
+        android:name="com.anupkunwar.samachar.ui.SelectPublisherFragment"
+        android:label="PublisherFragment"
+        tools:layout="@layout/fragment_select_publisher">
+
+        <action
+            android:id="@+id/action_selectPublisherFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.anupkunwar.samachar.home.HomeFragment"
-        tools:layout="@layout/fragment_home"
-        android:label="HomeFragment" >
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
@@ -17,6 +28,6 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.anupkunwar.samachar.detail.DetailFragment"
-        tools:layout="@layout/fragment_detail"
-        android:label="DetailFragment" />
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail" />
 </navigation>
